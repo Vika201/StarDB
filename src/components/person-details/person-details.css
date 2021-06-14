@@ -1,0 +1,4 @@
+.person-details {
+    display: flex;
+    max-width: 40rem;
+}
