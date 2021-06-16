@@ -12,17 +12,18 @@ export default class SwapiService  {
 
     async getAllPeople() {
         const res = await this.getResource("https://swapi.dev/api/people/");
-        return res.results;
+        return res.results.map(this._transformPerson);
     }
 
 
-    getPerson(id) {
-        return this.getResource(`https://swapi.dev/api/people/${id}/`)
+    async getPerson(id) {
+        const person = await this.getResource(`https://swapi.dev/api/people/${id}/`);
+        return this._transformPerson(person);
     }
 
     async getAllPlanets() {
         const res = await this.getResource("https://swapi.dev/api/planets/");
-        return res.results;
+        return res.results.map(this._transformPlanet);
     }
 
     async getPlanet(id) {
@@ -32,11 +33,12 @@ export default class SwapiService  {
 
     async getAllStarships() {
         const res = await this.getResource("https://swapi.dev/api/starships/");
-        return res.results.map(this._transformPlanet);
+        return res.results.map(this._transformStarship);
     }
 
-    getStarship(id) {
-        return this.getResource(`https://swapi.dev/api/starships/${id}/`)
+    async getStarship(id) {
+        const starship = await this.getResource(`https://swapi.dev/api/starships/${id}/`);
+        return this._transformStarship(starship);
     }
 
     _extractId(item) {
@@ -51,6 +53,30 @@ export default class SwapiService  {
             population: planet.population,
             rotationPeriod: planet.rotation_period,
             diameter: planet.diameter
+        }
+    }
+
+    _transformStarship(starship) {
+        return {
+            id: this._extractId(starship),
+            name: starship.name,
+            model: starship.model,
+            manufacturer: starship.manufacturer,
+            costInCredits: starship.cost_in_credits,
+            length: starship.length,
+            crew: starship.crew,
+            passengers: starship.passengers,
+            cargoCapaciti: starship.cargo_capaciti
+        }
+    }
+
+    _transformPerson(person) {
+        return{
+            id: this._extractId(person),
+            name: person.name,
+            gender: person.gender,
+            birthYear: person.birth_year,
+            eyeColor: person.eye_color
         }
     }
 }
