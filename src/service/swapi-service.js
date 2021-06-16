@@ -25,24 +25,32 @@ export default class SwapiService  {
         return res.results;
     }
 
-    getPlanet(id) {
-        return this.getResource(`https://swapi.dev/api/planets/${id}/`)
+    async getPlanet(id) {
+        const planet = await this.getResource(`https://swapi.dev/api/planets/${id}/`);
+        return this._transformPlanet(planet);
     }
 
     async getAllStarships() {
         const res = await this.getResource("https://swapi.dev/api/starships/");
-        return res.results;
+        return res.results.map(this._transformPlanet);
     }
 
     getStarship(id) {
         return this.getResource(`https://swapi.dev/api/starships/${id}/`)
     }
+
+    _extractId(item) {
+        const idRegExp = /\/([0-9]*)\/$/;
+        return item.url.match(idRegExp)[1];
+    }
+
+    _transformPlanet(planet) {
+        return {
+            id: this._extractId(planet),
+            name: planet.name,
+            population: planet.population,
+            rotationPeriod: planet.rotation_period,
+            diameter: planet.diameter
+        }
+    }
 }
-
-const swapi = new SwapiService();
-
-swapi.getAllPeople().then((people) => {
-    people.forEach((p) => {
-        console.log(p.name)
-    })
-})
