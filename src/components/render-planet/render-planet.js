@@ -32,8 +32,7 @@ export default class RenderPlanet extends Component {
         const { planet: {
             id, name,
             population, rotationPeriod,
-            diameter
-        } } = this.state;
+            diameter } } = this.state;
 
         return (
             <div className="render-planet card bg-dark mb-3 d-flex">
