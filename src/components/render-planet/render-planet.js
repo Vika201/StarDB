@@ -22,7 +22,7 @@ export default class RenderPlanet extends Component {
     }
 
     updatePlanet() {
-        const id = Math.floor(Math.random() * 25) + 2;
+        const id = 12;
         this.swapiService
             .getPlanet(id)
             .then(this.onPlanetLoaded)

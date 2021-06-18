@@ -5,14 +5,11 @@
 }
 
 .render-planet img {
-    margin: 0 30px 10px 0;
-    border-radius: 30px;
+    margin-right: 10px;
+    height:150px;
+    width:150px;
+    border-radius: 10px;
 
-}
-
-.info-card h4,
-p {
-    padding: 0 10px 10px 0;
 }
 
 .info-card .list-group-item {
