@@ -1,7 +1,6 @@
 .render-planet {
     max-width: 40rem;
-    display: flex;
-    margin: 20px;
+    margin-top: 0;
 }
 
 .render-planet img {

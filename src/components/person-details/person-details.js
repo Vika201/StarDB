@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import imagePerson from'../my-image/R2-D2.jpg';
-
 import './person-details.css';
 
 export default class PersonDetails extends Component {
@@ -9,7 +7,6 @@ export default class PersonDetails extends Component {
         return (
             <div className="render-planet card bg-dark mb-3 d-flex">
                 <div className="card-body">
-                    <img src={imagePerson} alt=" " width="150px" height="160px" align="left" />
                     <div className="info-card">
                         <h4> R2-D2 </h4>
                         <ul className="info list-group list-group-flush">
