@@ -16,8 +16,7 @@ export default class RenderPlanet extends Component {
         error: false
     }
 
-    constructor() {
-        super();
+    componentDidMount() {
         this.updatePlanet();
     }
 
@@ -52,7 +51,7 @@ export default class RenderPlanet extends Component {
         const content = hasData ?  <PlanetView planet={planet} /> : null;
 
         return (
-            <div className="render-planet jumbotron rounded">
+            <div className="render-planet bg-dark mb-3">
                 {errorMessage}
                 {spinner}
                 {content}
