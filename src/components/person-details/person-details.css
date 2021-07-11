@@ -1,4 +1,12 @@
-.person-details {
+.person-details card {
     display: flex;
-    max-width: 40rem;
+    max-width: 30rem;
+}
+
+.person-image {
+    margin-right: 10px;
+    width:150px;
+    height: 150px;
+    border-radius: 10px;
+
 }

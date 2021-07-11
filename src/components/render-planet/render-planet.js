@@ -61,12 +61,16 @@ export default class RenderPlanet extends Component {
 };
 
 const PlanetView = ({ planet }) => {
+
     const { id, name, population,
             rotationPeriod, diameter } = planet;
 
     return (
         <React.Fragment>
-            <img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt=" " height="150px" width="150px" className="img" align="left"/>
+            <img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+                 alt=" "
+                 className="img"
+                 align="left"/>
             <div className="info-card">
                 <h4>{name}</h4>
                 <ul className="info list-group list-group-flush">
