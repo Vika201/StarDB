@@ -1,6 +1,6 @@
 .person-details card {
     display: flex;
-    max-width: 30rem;
+    padding-right: 30px
 }
 
 .person-image {
