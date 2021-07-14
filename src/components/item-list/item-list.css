@@ -1,5 +1,6 @@
 .item-list {
     list-style: none;
-    max-width: 40rem;
+    max-width: 20rem;
     display: flex;
+    margin-right: 30px;
 }

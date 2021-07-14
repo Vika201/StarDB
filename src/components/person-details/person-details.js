@@ -81,16 +81,16 @@ const SelectedPersonDetails = ({ person }) => {
                         <ul className="info list-group list-group-flush">
                             <li className="list-group-item">
                                 <span>Gender</span>
-                                <span>{gender}</span>
+                                <span> {gender} </span>
                             </li>
                             <li className="list-group-item">
                                 <span>Birth Year</span>
-                                <span>{birthYear}</span>
+                                <span> {birthYear} </span>
 
                             </li>
                             <li className="list-group-item">
                                 <span>Eye Color</span>
-                                <span>{eyeColor}</span>
+                                <span> {eyeColor} </span>
                             </li>
                         </ul>
                     </div>

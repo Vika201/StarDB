@@ -1,12 +1,15 @@
 .person-details card {
     display: flex;
-    padding-right: 30px
+}
+
+.info-card h4 {
+    font-size: 20px;
 }
 
 .person-image {
-    margin-right: 10px;
+    margin: 10px 5px 0 10px;
     width:150px;
-    height: 150px;
+    height: 200px;
     border-radius: 10px;
 
 }
