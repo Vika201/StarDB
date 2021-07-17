@@ -4,6 +4,7 @@ import SwapiService from "../../service/swapi-service";
 
 import Spinner from "../spinner";
 import './person-details.css';
+import ErrorButton from "../error-button/error-button";
 
 export default class PersonDetails extends Component {
 
@@ -94,6 +95,7 @@ const SelectedPersonDetails = ({ person }) => {
                             </li>
                         </ul>
                     </div>
+                    <ErrorButton />
                 </div>
         </React.Fragment>
     )

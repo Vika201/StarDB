@@ -2,23 +2,15 @@ import React, {Component} from 'react';
 
 import Header from '../header/header';
 import RenderPlanet from '../render-planet/render-planet';
-import ItemList from '../item-list/item-list';
-import PersonDetails from '../person-details/person-details';
 import ErrorButton from '../error-button/error-button';
 import ErrorIndicator from "../error-indicator/error-indicator";
 
 import "./app.css";
+import PeoplePage from "../people-page/people-page";
 
 export default class App extends Component {
     state = {
-        selectedPerson: null,
         hasError: false
-    }
-
-    onPersonSelected = (id) => {
-        this.setState({
-            selectedPerson: id
-        })
     }
 
     componentDidCatch() {
@@ -37,14 +29,7 @@ export default class App extends Component {
                 <RenderPlanet />
                 <ErrorButton />
 
-                <div className="row mb-2">
-                    <div className="col-md-6">
-                        <ItemList onItemSelected={this.onPersonSelected}/>
-                    </div>
-                    <div className="col-md-6">
-                        <PersonDetails personId={this.state.selectedPerson}/>
-                    </div>
-                </div>
+                <PeoplePage />
             </div>
             )
 
