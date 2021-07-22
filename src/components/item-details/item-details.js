@@ -1,54 +1,51 @@
 import React, {Component} from 'react';
 
-import SwapiService from "../../service/swapi-service";
-
 import Spinner from "../spinner";
-import './person-details.css';
+import './item-details.css';
 import ErrorButton from "../error-button/error-button";
 
-export default class PersonDetails extends Component {
-
-    swapiService = new SwapiService();
+export default class ItemDetails extends Component {
 
     state = {
-        person: null,
-        loading: false
+        item: null,
+        loading: false,
+        image: null
     }
 
     componentDidMount() {
-        this.updatePerson();
+        this.updateItem();
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.personId !== prevProps.personId) {
-            this.updatePerson();
+        if (this.props.itemId !== prevProps.itemId) {
+            this.updateItem();
         }
     }
 
-    updatePerson() {
+    updateItem() {
         this.setState({
             loading: true
         });
-        const {personId} = this.props;
-        if (!personId) {
+        const { itemId, getData, getImageUrl } = this.props;
+        if (!itemId) {
             return;
         }
 
-        this.swapiService
-            .getPerson(personId)
-            .then((person) => {
+        getData(itemId)
+            .then((item) => {
                 this.setState({
-                    person,
-                    loading: false
+                    item,
+                    loading: false,
+                    image: getImageUrl(item)
                 })
             })
     }
 
     render() {
 
-        const { person, loading } = this.state;
+        const { item, loading, image } = this.state;
 
-        if (!person) {
+        if (!item) {
             return <span>Select a person from the list</span>
         }
 
@@ -56,25 +53,14 @@ export default class PersonDetails extends Component {
             return <Spinner />
         }
 
+        const { id, name, gender,
+            birthYear, eyeColor } = item;
+
         return (
             <div className="person-details card">
-                <SelectedPersonDetails person={person} />
-            </div>
-        )
-
-    }
-}
-
-const SelectedPersonDetails = ({ person }) => {
-
-    const { id, name, gender,
-        birthYear, eyeColor } = person;
-
-    return (
-        <React.Fragment>
                 <img className="person-image"
                      alt=""
-                     src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+                     src={image}
                      align="left" />
                 <div className="card-body">
                     <div className="info-card">
@@ -97,6 +83,7 @@ const SelectedPersonDetails = ({ person }) => {
                     </div>
                     <ErrorButton />
                 </div>
-        </React.Fragment>
-    )
-}
+            </div>
+        )
+    }
+};
