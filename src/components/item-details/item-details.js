@@ -4,6 +4,19 @@ import Spinner from "../spinner";
 import './item-details.css';
 import ErrorButton from "../error-button/error-button";
 
+const Record = ({ item, field, label }) => {
+    return (
+        <li className="list-group-item">
+            <span>{label}</span>
+            <span> {item[field]} </span>
+        </li>
+    );
+};
+
+export {
+    Record
+};
+
 export default class ItemDetails extends Component {
 
     state = {
@@ -66,19 +79,11 @@ export default class ItemDetails extends Component {
                     <div className="info-card">
                         <h4>{name}</h4>
                         <ul className="info list-group list-group-flush">
-                            <li className="list-group-item">
-                                <span>Gender</span>
-                                <span> {gender} </span>
-                            </li>
-                            <li className="list-group-item">
-                                <span>Birth Year</span>
-                                <span> {birthYear} </span>
-
-                            </li>
-                            <li className="list-group-item">
-                                <span>Eye Color</span>
-                                <span> {eyeColor} </span>
-                            </li>
+                            {
+                                React.Children.map(this.props.children, (child) => {
+                                    return React.cloneElement(child, { item });
+                                })
+                            }
                         </ul>
                     </div>
                     <ErrorButton />

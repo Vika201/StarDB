@@ -9,7 +9,7 @@ import "./app.css";
 import PeoplePage from "../people-page/people-page";
 import ItemList from "../item-list/item-list";
 import SwapiService from "../../service/swapi-service";
-import ItemDetails from "../item-details/item-details";
+import ItemDetails, {Record} from "../item-details/item-details";
 import Row from "../row/row";
 
 export default class App extends Component {
@@ -40,14 +40,25 @@ export default class App extends Component {
             <ItemDetails
                 itemId={11}
                 getData={getPerson}
-                getImageUrl={getPersonImage}/>
+                getImageUrl={getPersonImage}>
+
+                <Record field="gender" label="Gender" />
+                <Record field="eyeColor" label="Eye Color" />
+
+            </ItemDetails>
         );
 
         const starshipDetails = (
             <ItemDetails
                 itemId={5}
                 getData={getStarship}
-                getImageUrl={getStarshipImage}/>
+                getImageUrl={getStarshipImage}>
+
+                <Record field="model" label="Model" />
+                <Record field="length" label="Length" />
+                <Record field="costInCredits" label="Cost" />
+
+            </ItemDetails>
         );
         return (
             <div className="app container-fluid">
