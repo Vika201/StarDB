@@ -31,43 +31,24 @@ export default class App extends Component {
             return <ErrorIndicator />
         }
 
-        const { getPerson,
-                getStarship,
-                getPersonImage,
-                getStarshipImage } = this.swapiService;
+        const { getAllPeople,
+                getAllPlanets } = this.swapiService;
 
-        const personDetails = (
-            <ItemDetails
-                itemId={11}
-                getData={getPerson}
-                getImageUrl={getPersonImage}>
 
-                <Record field="gender" label="Gender" />
-                <Record field="eyeColor" label="Eye Color" />
-
-            </ItemDetails>
-        );
-
-        const starshipDetails = (
-            <ItemDetails
-                itemId={5}
-                getData={getStarship}
-                getImageUrl={getStarshipImage}>
-
-                <Record field="model" label="Model" />
-                <Record field="length" label="Length" />
-                <Record field="costInCredits" label="Cost" />
-
-            </ItemDetails>
-        );
         return (
             <div className="app container-fluid">
                 <Header />
                 <RenderPlanet />
 
-                <Row
-                    left={personDetails}
-                    right={starshipDetails}/>
+                <ItemList
+                    getData={getAllPeople}>
+                    {({name}) => <span>{name}</span>}
+                </ItemList>
+
+                <ItemList
+                    getData={getAllPlanets}>
+                    {({name}) => <span>{name}</span>}
+                </ItemList>
 
             </div>
             )
