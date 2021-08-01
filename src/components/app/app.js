@@ -6,11 +6,15 @@ import ErrorButton from '../error-button/error-button';
 import ErrorIndicator from "../error-indicator/error-indicator";
 
 import "./app.css";
-import PeoplePage from "../people-page/people-page";
-import ItemList from "../item-list/item-list";
 import SwapiService from "../../service/swapi-service";
 import ItemDetails, {Record} from "../item-details/item-details";
 import Row from "../row/row";
+import { PersonList,
+         PlanetList,
+         StarshipList,
+         PersonDetails,
+         PlanetDetails,
+         StarshipDetails } from '../sw-components';
 
 export default class App extends Component {
 
@@ -18,7 +22,7 @@ export default class App extends Component {
 
     state = {
         hasError: false
-    }
+    };
 
     componentDidCatch() {
         this.setState({
@@ -31,24 +35,21 @@ export default class App extends Component {
             return <ErrorIndicator />
         }
 
-        const { getAllPeople,
-                getAllPlanets } = this.swapiService;
-
 
         return (
             <div className="app container-fluid">
                 <Header />
                 <RenderPlanet />
 
-                <ItemList
-                    getData={getAllPeople}>
-                    {({name}) => <span>{name}</span>}
-                </ItemList>
+                <PersonDetails itemId={5} />
 
-                <ItemList
-                    getData={getAllPlanets}>
+                <PersonList>
                     {({name}) => <span>{name}</span>}
-                </ItemList>
+                </PersonList>
+
+                <PlanetList>
+                    {({name}) => <span>{name}</span>}
+                </PlanetList>
 
             </div>
             )
