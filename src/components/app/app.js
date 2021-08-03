@@ -16,6 +16,8 @@ import { PersonList,
          PersonDetails,
          PlanetDetails,
          StarshipDetails } from '../sw-components';
+import ErrorBoundry from "../error-boundry/error-boundry";
+import {SwapiServiceProvider} from "../swapi-service-context";
 
 export default class App extends Component {
 
@@ -39,20 +41,24 @@ export default class App extends Component {
 
         return (
             <div className="app container-fluid">
-                <Header />
-                <RenderPlanet />
+                <ErrorBoundry>
+                    <SwapiServiceProvider value={this.swapiService}>
+                        <Header />
+                        <RenderPlanet />
 
-                <PersonDetails itemId={5} />
+                        <PersonDetails itemId={5} />
 
-                <PlanetDetails itemId={8} />
+                        <PlanetDetails itemId={8} />
 
-                <StarshipDetails itemId={11} />
+                        <StarshipDetails itemId={11} />
 
-                <PersonList />
+                        <PersonList />
 
-                <PlanetList />
+                        <PlanetList />
 
-                <StarshipList />
+                        <StarshipList />
+                    </SwapiServiceProvider>
+                </ErrorBoundry>
             </div>
             )
 
