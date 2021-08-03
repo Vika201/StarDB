@@ -9,6 +9,7 @@ import "./app.css";
 import SwapiService from "../../service/swapi-service";
 import ItemDetails, {Record} from "../item-details/item-details";
 import Row from "../row/row";
+
 import { PersonList,
          PlanetList,
          StarshipList,
@@ -43,14 +44,15 @@ export default class App extends Component {
 
                 <PersonDetails itemId={5} />
 
-                <PersonList>
-                    {({name}) => <span>{name}</span>}
-                </PersonList>
+                <PlanetDetails itemId={8} />
 
-                <PlanetList>
-                    {({name}) => <span>{name}</span>}
-                </PlanetList>
+                <StarshipDetails itemId={11} />
 
+                <PersonList />
+
+                <PlanetList />
+
+                <StarshipList />
             </div>
             )
 
