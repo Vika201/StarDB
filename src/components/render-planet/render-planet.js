@@ -14,7 +14,7 @@ export default class RenderPlanet extends Component {
         planet: {},
         loading: true,
         error: false
-    }
+    };
 
     componentDidMount() {
         this.updatePlanet();
@@ -24,14 +24,14 @@ export default class RenderPlanet extends Component {
         this.setState({
             planet,
             loading: false})
-    }
+    };
 
     onError = (err) => {
         this.setState({
             error: true,
             loading: false
         })
-    }
+    };
 
     updatePlanet() {
         const id = 12;

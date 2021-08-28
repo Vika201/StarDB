@@ -12,7 +12,7 @@ export default class PeoplePage extends Component {
 
     state = {
         selectedPerson: null
-    }
+    };
 
     onPersonSelected = (id) => {
         this.setState({

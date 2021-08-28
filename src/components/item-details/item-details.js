@@ -23,7 +23,7 @@ export default class ItemDetails extends Component {
         item: null,
         loading: false,
         image: null
-    }
+    };
 
     componentDidMount() {
         this.updateItem();
@@ -66,8 +66,7 @@ export default class ItemDetails extends Component {
             return <Spinner />
         }
 
-        const { id, name, gender,
-            birthYear, eyeColor } = item;
+        const { name } = item;
 
         return (
             <div className="person-details card">
