@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
 
 import Spinner from "../spinner/spinner";
+import ErrorIndicator from "../error-indicator/error-indicator";
 
 const withData = (View, getData) => {
     return class extends Component {
 
         state = {
-            data: null
+            data: null,
+            loading: true,
+            hasError: false
         };
 
         componentDidMount() {
-
             getData()
                 .then((data) => {
                     this.setState({
-                        data
+                        data,
+                        loading: false
                     })
                 })
         };
 
         render() {
-            const { data } = this.state;
+            const { data, loading, hasError } = this.state;
 
-            if(!data) {
+            if (loading) {
                 return <Spinner />
+            }
+
+            if (hasError) {
+                return <ErrorIndicator />
             }
 
             return (
