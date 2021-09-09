@@ -18,7 +18,16 @@ export default class RenderPlanet extends Component {
 
     componentDidMount() {
         this.updatePlanet();
+        this.interval = setInterval(
+            () => this.updatePlanet(),
+            5000
+        );
     }
+
+    componentWillUnmount(){
+        clearInterval(this.interval);
+    }
+
 
     onPlanetLoaded = (planet) => {
         this.setState({
@@ -34,12 +43,12 @@ export default class RenderPlanet extends Component {
     };
 
     updatePlanet() {
-        const id = 12;
+        const id = Math.floor(Math.random()*26)+1;
         this.swapiService
             .getPlanet(id)
             .then(this.onPlanetLoaded)
             .catch(this.onError)
-    }
+    };
 
     render() {
         const { planet, loading, error } = this.state;
@@ -90,4 +99,4 @@ const PlanetView = ({ planet }) => {
             </div>
         </React.Fragment>
     )
-}
+};

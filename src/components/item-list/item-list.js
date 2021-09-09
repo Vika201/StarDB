@@ -5,7 +5,11 @@ import './item-list.css';
 const ItemList = (props) => {
 
     const { data, onItemSelected, children: renderLabel } = props;
-
+    if (!data) {
+        return (
+            <span>data is not exist</span>
+        )
+    }
     const items = data.map(( item ) => {
         const { id } = item;
         const label = renderLabel(item);
