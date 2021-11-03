@@ -20,7 +20,7 @@ export default class RenderPlanet extends Component {
         this.updatePlanet();
         this.interval = setInterval(
             () => this.updatePlanet(),
-            5000
+            10000
         );
     }
 
